@@ -1,0 +1,9 @@
+{
+	"name": "maklja-covid-reporting-adf",
+	"location": "germanywestcentral",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3dc9711d-6be6-4be4-85e2-e69914309047",
+		"tenantId": "aadec3a6-08eb-4d08-936a-0635f5c6add0"
+	}
+}
