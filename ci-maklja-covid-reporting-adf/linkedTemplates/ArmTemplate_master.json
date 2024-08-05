@@ -1,0 +1,188 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ci-maklja-covid-reporting-adf"
+		},
+		"hci_covid_reporting_testing_clusterPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterPassword' of 'hci_covid_reporting_testing'"
+		},
+		"hci_covid_reporting_testing_clusterSshPassword": {
+			"type": "secureString",
+			"metadata": "Secure string for 'clusterSshPassword' of 'hci_covid_reporting_testing'"
+		},
+		"hci_covid_reporting_testing_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'hci_covid_reporting_testing'"
+		},
+		"ls_ablob_covidreportingsa_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_ablob_covidreportingsa'"
+		},
+		"ls_adls_covidreportingdl_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_adls_covidreportingdl'"
+		},
+		"ls_covid_reporting_sql_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_covid_reporting_sql'"
+		},
+		"ls_db_covid_cluster_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'ls_db_covid_cluster'"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_hostSubscriptionId": {
+			"type": "string",
+			"defaultValue": "9d335d7d-b11f-44a2-8558-3a83b99c6667"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_clusterResourceGroup": {
+			"type": "string",
+			"defaultValue": "covid-reporting-rg"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "covid-reporting"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "aadec3a6-08eb-4d08-936a-0635f5c6add0"
+		},
+		"ls_adls_covidreportingdl_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://makljacovidreportingdl.dfs.core.windows.net/"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "maklja-covid-server.database.windows.net"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "covid-db"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "maklja"
+		},
+		"ls_db_covid_cluster_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0801-130722-pm5wd103"
+		},
+		"ls_http_ecdc_data_eu_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "@{linkedService().sourceBaseURL}"
+		},
+		"tr_population_data_arrived_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/9d335d7d-b11f-44a2-8558-3a83b99c6667/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/makljacovidreportingsa"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ci-maklja-covid-reporting-adf_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_ablob_covidreportingsa_connectionString": {
+						"value": "[parameters('ls_ablob_covidreportingsa_connectionString')]"
+					},
+					"ls_adls_covidreportingdl_accountKey": {
+						"value": "[parameters('ls_adls_covidreportingdl_accountKey')]"
+					},
+					"ls_covid_reporting_sql_password": {
+						"value": "[parameters('ls_covid_reporting_sql_password')]"
+					},
+					"ls_db_covid_cluster_accessToken": {
+						"value": "[parameters('ls_db_covid_cluster_accessToken')]"
+					},
+					"ls_adls_covidreportingdl_properties_typeProperties_url": {
+						"value": "[parameters('ls_adls_covidreportingdl_properties_typeProperties_url')]"
+					},
+					"ls_covid_reporting_sql_properties_typeProperties_server": {
+						"value": "[parameters('ls_covid_reporting_sql_properties_typeProperties_server')]"
+					},
+					"ls_covid_reporting_sql_properties_typeProperties_database": {
+						"value": "[parameters('ls_covid_reporting_sql_properties_typeProperties_database')]"
+					},
+					"ls_covid_reporting_sql_properties_typeProperties_userName": {
+						"value": "[parameters('ls_covid_reporting_sql_properties_typeProperties_userName')]"
+					},
+					"ls_db_covid_cluster_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('ls_db_covid_cluster_properties_typeProperties_existingClusterId')]"
+					},
+					"ls_http_ecdc_data_eu_properties_typeProperties_url": {
+						"value": "[parameters('ls_http_ecdc_data_eu_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ci-maklja-covid-reporting-adf_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"hci_covid_reporting_testing_clusterPassword": {
+						"value": "[parameters('hci_covid_reporting_testing_clusterPassword')]"
+					},
+					"hci_covid_reporting_testing_clusterSshPassword": {
+						"value": "[parameters('hci_covid_reporting_testing_clusterSshPassword')]"
+					},
+					"hci_covid_reporting_testing_servicePrincipalKey": {
+						"value": "[parameters('hci_covid_reporting_testing_servicePrincipalKey')]"
+					},
+					"hci_covid_reporting_testing_properties_typeProperties_hostSubscriptionId": {
+						"value": "[parameters('hci_covid_reporting_testing_properties_typeProperties_hostSubscriptionId')]"
+					},
+					"hci_covid_reporting_testing_properties_typeProperties_clusterResourceGroup": {
+						"value": "[parameters('hci_covid_reporting_testing_properties_typeProperties_clusterResourceGroup')]"
+					},
+					"hci_covid_reporting_testing_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('hci_covid_reporting_testing_properties_typeProperties_servicePrincipalId')]"
+					},
+					"hci_covid_reporting_testing_properties_typeProperties_tenant": {
+						"value": "[parameters('hci_covid_reporting_testing_properties_typeProperties_tenant')]"
+					},
+					"tr_population_data_arrived_properties_typeProperties_scope": {
+						"value": "[parameters('tr_population_data_arrived_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ci-maklja-covid-reporting-adf_ArmTemplate_0')]"
+			]
+		}
+	]
+}
