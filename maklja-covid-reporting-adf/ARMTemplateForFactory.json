@@ -982,6 +982,7 @@
 				"activities": [
 					{
 						"name": "Copy data to SQL database",
+						"description": "Copy description...",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
