@@ -2387,7 +2387,7 @@
 			"type": "Microsoft.DataFactory/factories/triggers",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"description": "Random description",
+				"description": "Random description...",
 				"annotations": [],
 				"runtimeState": "Started",
 				"pipeline": {
