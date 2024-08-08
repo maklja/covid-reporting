@@ -1,7 +1,7 @@
 {
 	"name": "tr_ingest_ecdc_data",
 	"properties": {
-		"description": "Random description",
+		"description": "Random description...",
 		"annotations": [],
 		"runtimeState": "Started",
 		"pipeline": {
