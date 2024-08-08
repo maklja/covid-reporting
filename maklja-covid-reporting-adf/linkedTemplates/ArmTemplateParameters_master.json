@@ -1,0 +1,69 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "maklja-covid-reporting-adf"
+		},
+		"hci_covid_reporting_testing_clusterPassword": {
+			"value": ""
+		},
+		"hci_covid_reporting_testing_clusterSshPassword": {
+			"value": ""
+		},
+		"hci_covid_reporting_testing_servicePrincipalKey": {
+			"value": ""
+		},
+		"ls_ablob_covidreportingsa_connectionString": {
+			"value": ""
+		},
+		"ls_adls_covidreportingdl_accountKey": {
+			"value": ""
+		},
+		"ls_covid_reporting_sql_password": {
+			"value": ""
+		},
+		"ls_db_covid_cluster_accessToken": {
+			"value": ""
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_hostSubscriptionId": {
+			"value": "9d335d7d-b11f-44a2-8558-3a83b99c6667"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_clusterResourceGroup": {
+			"value": "covid-reporting-rg"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_servicePrincipalId": {
+			"value": "covid-reporting"
+		},
+		"hci_covid_reporting_testing_properties_typeProperties_tenant": {
+			"value": "aadec3a6-08eb-4d08-936a-0635f5c6add0"
+		},
+		"ls_adls_covidreportingdl_properties_typeProperties_url": {
+			"value": "https://makljacovidreportingdl.dfs.core.windows.net/"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_server": {
+			"value": "maklja-covid-server.database.windows.net"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_database": {
+			"value": "covid-db"
+		},
+		"ls_covid_reporting_sql_properties_typeProperties_userName": {
+			"value": "maklja"
+		},
+		"ls_db_covid_cluster_properties_typeProperties_existingClusterId": {
+			"value": "0801-130722-pm5wd103"
+		},
+		"ls_http_ecdc_data_eu_properties_typeProperties_url": {
+			"value": "@{linkedService().sourceBaseURL}"
+		},
+		"tr_population_data_arrived_properties_typeProperties_scope": {
+			"value": "/subscriptions/9d335d7d-b11f-44a2-8558-3a83b99c6667/resourceGroups/covid-reporting-rg/providers/Microsoft.Storage/storageAccounts/makljacovidreportingsa"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
